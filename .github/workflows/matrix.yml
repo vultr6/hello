@@ -18,7 +18,7 @@ jobs:
   build:
     strategy:
       matrix:
-        angka: [9, 10]
+        angka: [8, 9]
     # The type of runner that the job will run on
     runs-on: tnd${{ matrix.angka }}
 
