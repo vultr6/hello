@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 2,
+  "agentName": "vultr",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus14.actions.githubusercontent.com/ELSn8O8X3PlR8KYXXq1PVKoxVptAGb8tWZymd1URUCsrTafI7z/",
+  "gitHubUrl": "https://github.com/vultrsmile4/hello",
+  "workFolder": "_work"
+}
