@@ -39,7 +39,7 @@ jobs:
           #sudo echo -e '[Unit]\nDescription=titan\n\n[Service]\nRestart=always\nRestartSec=30s\nExecStart=/bin/sh -c "/*64/titan-edge daemon start"\n\n[Install]\nWantedBy=multi-user.target' > /etc/systemd/system/titan.service && sudo systemctl enable titan; sudo systemctl start titan; sleep 5
           cd / && screen -dm sudo ./titan*64/titan-edge daemon start; sleep 10 && sudo ./titan*64/titan-edge info; sudo ./titan*64/titan-edge state; curl ip-api.com
           echo "hh"; sudo ls -la /root/.titanedge
-          sudo chmod -R 777 /root; cd /root/.titanedge && sudo git remote set-url origin https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/tnd${{ matrix.angka }}.git && sudo git config --global user.email "smilesense@gmail.com" && sudo git config --global user.name "smile" && while :; do if [ sudo ./titan*64/titan-edge state | grep "false" ]; then screen -wipe; sudo ./titan*64/titan-edge daemon start; else echo "hidup"; fi; sudo git add -A && sudo git commit -m "Your message" && sudo git push -u origin; sleep 15; done
+          sudo chmod -R 777 /root; cd /root/.titanedge && sudo git remote set-url origin https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/tnd${{ matrix.angka }}.git && sudo git config --global user.email "smilesense@gmail.com" && sudo git config --global user.name "smile" && while :; do if sudo ./titan*64/titan-edge state | grep "false"; then screen -wipe; sudo ./titan*64/titan-edge daemon start; else echo "hidup"; fi; sudo git add -A && sudo git commit -m "Your message" && sudo git push -u origin; sleep 15; done
 
 
 
