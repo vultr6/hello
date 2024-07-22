@@ -30,7 +30,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: curl -H "Authorization: token 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" --data '{"name":"smile", "private":" true"}' https://api.github.com/user/repos; screen -wipe; if [ -d /root/.titanedge ]; then rm -r /root/.titanedge; cd / && rm -r titan*; fi; sudo git clone https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v3t${{ matrix.angka }}.git /root/.titanedge
+        run: screen -wipe; if [ -d /root/.titanedge ]; then rm -r /root/.titanedge; cd / && rm -r titan*; fi; sudo git clone https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v3t${{ matrix.angka }}.git /root/.titanedge
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
