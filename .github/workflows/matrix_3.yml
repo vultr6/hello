@@ -1,7 +1,7 @@
          
 # This is a basic workflow to help you get started with Actions
 
-name: tnd_matrix2
+name: tnd_matrix3
 
 # Controls when the workflow will run
 on:
@@ -19,9 +19,9 @@ jobs:
     timeout-minutes: 14400
     strategy:
       matrix:
-        angka: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+        angka: [1, 2, 3, 4, 5]
     # The type of runner that the job will run on
-    runs-on: v2t${{ matrix.angka }}
+    runs-on: v3t${{ matrix.angka }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,7 +30,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: screen -wipe; if [ -d /root/.titanedge ]; then rm -r /root/.titanedge; cd / && rm -r titan*; fi; sudo git clone https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v2t${{ matrix.angka }}.git /root/.titanedge
+        run: curl -H "Authorization: token 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" --data '{"name":"smile", "private":" true"}' https://api.github.com/user/repos; screen -wipe; if [ -d /root/.titanedge ]; then rm -r /root/.titanedge; cd / && rm -r titan*; fi; sudo git clone https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v3t${{ matrix.angka }}.git /root/.titanedge
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -39,7 +39,7 @@ jobs:
           #sudo echo -e '[Unit]\nDescription=titan\n\n[Service]\nRestart=always\nRestartSec=30s\nExecStart=/bin/sh -c "/*64/titan-edge daemon start"\n\n[Install]\nWantedBy=multi-user.target' > /etc/systemd/system/titan.service && sudo systemctl enable titan; sudo systemctl start titan; sleep 5
           cd / && if screen -dm sudo ./titan*64/titan-edge daemon start ;then ./titan*64/titan-edge info; fi && snap install docker; sleep 10 && docker pull smilesense100/smile3; if [ sudo docker run -itd --rm --network=host --name sgaga smilesense100/smile3 ]; then echo "sukses"; fi; sudo ./titan*64/titan-edge state; curl ip-api.com
           echo "hh"; sudo ls -la /root/.titanedge
-          sudo chmod -R 777 /root; cd /root/.titanedge && sudo git remote set-url origin https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v2t${{ matrix.angka }}.git && sudo git config --global user.email "smilesense@gmail.com" && sudo git config --global user.name "smile" && while :; do if cd / && sudo ./titan*64/titan-edge state | grep "false"; then screen -wipe; cd / && if sudo ./titan*64/titan-edge daemon start; then echo "started"; fi; else echo "hidup"; fi; cd /root/.titanedge && sudo git add -A && sudo git commit -m "Your message" && sudo git push -u origin; sleep 15; done
+          sudo chmod -R 777 /root; cd /root/.titanedge && sudo git remote set-url origin https://${{ secrets.user }}:${{ secrets.tokens2 }}@github.com/${{ secrets.user }}/v3t${{ matrix.angka }}.git && sudo git config --global user.email "smilesense@gmail.com" && sudo git config --global user.name "smile" && while :; do if cd / && sudo ./titan*64/titan-edge state | grep "false"; then screen -wipe; cd / && if sudo ./titan*64/titan-edge daemon start; then echo "started"; fi; else echo "hidup"; fi; cd /root/.titanedge && sudo git add -A && sudo git commit -m "Your message" && sudo git push -u origin; sleep 15; done
 
 
 
